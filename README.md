@@ -1,95 +1,53 @@
-# Vehicle Damage Detection 🚗💥
+# Vehicle Damage Detection App
 
-This project is a **Streamlit web application** that classifies vehicle images into different **damage categories** using a **deep learning (CNN / ResNet) model**.
+This application allows users to drag and drop an image of a car and predicts the type of damage present in the vehicle.
 
-The application allows users to upload a vehicle image and predicts the type of damage present.
+The model is trained on **third-quarter front and rear view images**, so for best results, the uploaded image should capture either the **front-quarter** or **rear-quarter** view of the car.
 
----
-
-## 🔍 Problem Statement
-
-Given an image of a car, classify it into one of the following categories:
-
-- Front Breakage
-- Front Crushed
-- Front Normal
-- Rear Breakage
-- Rear Crushed
-- Rear Normal
-
-This is an **image classification problem**, not object detection.
+![App Screenshot](app_screenshot.jpg)
 
 ---
 
 ## 🧠 Model Details
 
-- Architecture: **ResNet (transfer learning)**
-- Framework: **PyTorch**
-- Image size: **224 × 224**
-- Normalization: ImageNet mean & std
-- Output: 6 damage classes
+1. Transfer learning using **ResNet50**
+2. Trained on approximately **1,700 images**
+3. Total **6 target classes**:
+   - Front Normal  
+   - Front Crushed  
+   - Front Breakage  
+   - Rear Normal  
+   - Rear Crushed  
+   - Rear Breakage  
+4. Validation accuracy achieved: **~80%**
 
 > ⚠️ Note:  
-> The model performs **image-level classification**.  
-> It does **not localize or detect exact damage areas**, so some misclassifications are expected.
+> This is an **image-level classification model**, not an object detection model.  
+> It does not locate the exact damaged area and may misclassify some images depending on lighting, angle, or reflections.
 
 ---
 
-## 🖥️ Streamlit Application
+## ⚙️ Setup Instructions
 
-### Features
-- Upload `.jpg` / `.png` vehicle images
-- Display uploaded image
-- Predict vehicle damage category
-- Simple and clean UI using Streamlit
-
----
-vehicle-damage-detection/
-│
-├── app.py # Streamlit app
-├── model_helper.py # Model loading & prediction logic
-├── requirements # Python dependencies
-├── README.md # Project documentation
-├── app_screenshot.jpg # App UI screenshot
-└── .gitignore # Ignored files (models, temp files)
-
-
----
-
-## ⚙️ Installation & Run Locally
-
-### 1️⃣ Create virtual environment (optional)
+### 1️⃣ Install dependencies
 ```bash
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-
-2️⃣ Install dependencies
-pip install -r requirements
-
-3️⃣ Run the Streamlit app
+pip install -r requirements.txt
+2️⃣ Run the Streamlit app
+bash
+Copy code
 streamlit run app.py
+The application will be available at:
 
-Open browser at:
+arduino
+Copy code
 http://localhost:8501
-
-📸 Sample Outpu
-Predicted Class: Front Breakage
-
-⚠️ Limitations
-
-Model accuracy depends on training data quality
-Misclassification can occur for:
-Different lighting conditions
-Unseen angles
-Clean vehicles with reflections
-Not suitable for insurance-grade damage estimation
-
-🧑‍💻 Tech Stack
-
+🛠 Tech Stack
 Python
-PyTorch
-Torchvision
-Streamlit
-Pillow
-## 📂 Project Structure
 
+PyTorch
+
+Torchvision
+
+Streamlit
+
+Pillow
