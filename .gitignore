@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Streamlit temp files
+temp_file.jpg
+
+# Model weights
+*.pth
+
+# IDE files
+.idea/
+.vscode/
